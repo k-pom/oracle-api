@@ -5,9 +5,7 @@ BASE_URL = "http://imperialassembly.com/oracle/"
 
 def get_image(name):
     card_id, hash_id = dosearch(name)
-    print card_id
-    print hash_id
-    return BASE_URL + docard(card_id, hash_id)
+    return urlopen(BASE_URL + docard(card_id, hash_id)).read()
 
 def dosearch(name):
     encodeddata = urlencode({'search_13': name})

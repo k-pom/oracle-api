@@ -4,12 +4,13 @@ from lib.l5r import get_image_by_name
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self, name):
-        get_image_by_name(name)
-        self.write("url")
+
+        self.write("<img src='" + get_image_by_name(name) + "' />")
 
 application = tornado.web.Application([
     (r"/cards/(.*)\.jpg", MainHandler),
 ])
+
 
 if __name__ == "__main__":
     application.listen(8888)

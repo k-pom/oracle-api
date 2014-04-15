@@ -1,3 +1,6 @@
+pip install tornado
+pip install python-cloudfiles
+
 GET /cards/[CARD TITLE].jpg
 
 See if it is in cloud files

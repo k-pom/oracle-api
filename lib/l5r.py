@@ -1,28 +1,21 @@
 from lib import oracle
+import cloudfiles
+from urllib import urlopen
+
+cf = cloudfiles.get_connection('username', 'api-key')
+files = cf.get_container("l5r-cards")
 
 def get_image_by_name(name):
-    if not in_cf(name):
-        save_card(name)
+    filename =  name + ".jpg"
+    if not (filename in files.list_objects()):
+        save_card(name, filename)
 
-    return url_from_cf(name)
+    return files[filename].public_uri()
 
-def in_cf(name):
-    """ Determine if the card is in cloud files """
 
-    return False
-
-def url_from_cf(name):
-    """ return the cdn url for the card """
-
-    return False
-
-def save_card(name):
+def save_card(name, filename):
     """ retrieve the image from oracle and push it to cloud files """
 
-    img_url = oracle.get_image(name)
-    save_to_cf(name, img_url)
-
-def save_to_cf(name, url):
-    """ Given a name and file, save it to cloud files """
-    print url
-    return False
+    image_data = oracle.get_image(name)
+    image = files.create_object(filename)
+    image.write(image_data)
