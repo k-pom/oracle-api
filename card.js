@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 			div = $("<div id='" + title + "' style='display:none;padding:3px;border:1px solid #CCC;background:white;position:absolute;float:right;z-index:1000000'><div>");
 
-			$.get("http://l5r.pomeroytx.com/cards/" + $(this).html() + ".jpg", function(data){
+			$.get("http://images.travelingronin.com/cards/" + $(this).html() + ".jpg", function(data){
 				$("#" + title).append(data);
 			})
 
