@@ -1,4 +1,5 @@
 import tornado.ioloop
+import os
 import tornado.web
 from lib.l5r import get_image_by_name
 
@@ -13,5 +14,5 @@ application = tornado.web.Application([
 
 
 if __name__ == "__main__":
-    application.listen(8888)
+    application.listen(os.environ.get("PORT", 5000))
     tornado.ioloop.IOLoop.instance().start()
