@@ -7,11 +7,10 @@ $(document).ready(function(){
 		}else{
        		title = $(this).html().replace(/ /g,'');
 
-			div = $("<div id='" + title + "' style='display:none;padding:3px;border:1px solid #CCC;background:white;position:absolute;float:right;z-index:1000000'><div>");
+			div = $("<div style='display:none;padding:3px;border:1px solid #CCC;background:white;position:absolute;float:right;z-index:1000000'><div>");
 
-			$.get("http://images.travelingronin.com/cards/" + $(this).html() + ".jpg", function(data){
-				$("#" + title).append(data);
-			})
+
+			div.append("<img src=\"http://l5r.herokuapp.com/cards/" + $(this).html() + ".jpg\" />");
 
 			div.css('left', $(this).position().left + $(this).width());
 
