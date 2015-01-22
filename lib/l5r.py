@@ -1,8 +1,10 @@
 from lib import oracle
 import cloudfiles
 from urllib import urlopen
+import os
 
-cf = cloudfiles.get_connection('username', 'api-key')
+
+cf = cloudfiles.get_connection(os.environ.get('CF_USER'), os.environ.get('CF_KEY'))
 files = cf.get_container("l5r-cards")
 
 def get_image_by_name(name):

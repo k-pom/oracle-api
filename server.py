@@ -5,7 +5,7 @@ from lib.l5r import get_image_by_name
 class MainHandler(tornado.web.RequestHandler):
     def get(self, name):
 
-        self.write(get_image_by_name(name.lower()))
+        self.redirect(get_image_by_name(name.lower()))
 
 application = tornado.web.Application([
     (r"/cards/(.*)\.jpg", MainHandler),
