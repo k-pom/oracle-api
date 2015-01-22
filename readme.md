@@ -1,3 +1,5 @@
+Running via heroku now
+
 pip install tornado
 pip install python-cloudfiles
 
